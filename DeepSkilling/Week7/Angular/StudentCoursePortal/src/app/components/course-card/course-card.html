@@ -1,0 +1,39 @@
+<div
+  class="course-card"
+  [ngClass]="course.gradeStatus"
+  [ngStyle]="{'font-size':'16px'}">
+
+  <h3>{{ course.name | uppercase }}</h3>
+
+  <p>
+    <strong>Code:</strong>
+    {{ course.code }}
+  </p>
+
+  <p>
+    <strong>Credits:</strong>
+    {{ course.credits }}
+  </p>
+
+  <p>
+    <strong>Duration:</strong>
+    {{ course.credits | courseDuration }}
+  </p>
+
+  <div [ngSwitch]="course.gradeStatus">
+
+    <span *ngSwitchCase="'passed'">
+      🟢 Passed
+    </span>
+
+    <span *ngSwitchCase="'pending'">
+      🟡 Pending
+    </span>
+
+    <span *ngSwitchCase="'failed'">
+      🔴 Failed
+    </span>
+
+  </div>
+
+</div>
